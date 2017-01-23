@@ -1,0 +1,22 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "My very first app with node and express!",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Testing",
+    "first",
+    "app",
+    "express",
+    "node",
+    "js"
+  ],
+  "author": "Tassos Lambrou",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
