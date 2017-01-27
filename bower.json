@@ -1,7 +1,7 @@
 {
-  "name": "myapp",
+  "name": "GitPushTassosMaster",
   "description": "My very first app with node and express!",
-  "main": "server.js",
+  "main": "app.js",
   "authors": [
     "Tassos Lambrou"
   ],
@@ -14,7 +14,7 @@
     "node",
     "js"
   ],
-  "homepage": "https://github.com/tlambrou/myapp",
+  "homepage": "https://agile-hollows-59112.herokuapp.com/",
   "ignore": [
     "**/.*",
     "node_modules",
