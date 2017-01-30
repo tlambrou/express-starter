@@ -19,6 +19,10 @@ app.get('/posts', function(req, res) {
     res.render('posts-index', { posts: posts});
 });
 
+app.get('/posts-new', function(req, res) {
+    res.render('posts-new');
+});
+
 app.get('/greetings/:name', function(req, res) {
     res.send('<h1>Greetings, ' + req.params.name + '</h1>');
 });
