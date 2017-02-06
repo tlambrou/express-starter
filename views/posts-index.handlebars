@@ -1,11 +1,19 @@
 <h1>Posts</h1>
 
-<h3><a href="/posts-new">New Post</a></h3>
+<form action='posts-index' id='post-form'>
+    <input type="text" name="title" />
+
+    <input type="text" name="category" />
+    <textarea name="content" class="form-control"></textarea>
+    <div class='text-right'>
+      <button id="save" type='submit'>Save</button>
+    </div>
+  </form>
 
   <div id="posts">
     {{#each posts}}
-    <h2><a href="/posts/{{../permalink}}#{{id}}">{{title}}</a></h2>
-    <div>{{content}}</div>
-    <div>{{category}}</div>
+    <h2><a href="/posts/{{../permalink}}#{{id}}">{{this.title}}</a></h2>
+    <div>{{this.content}}</div>
+    <div>{{this.body}}</div>
     {{/each}}
   </div>

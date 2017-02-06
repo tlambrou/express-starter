@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Example App</title>
-
-{{!-- jquery --}}
-<script src="/vendor/jquery/dist/jquery.min.js"></script>
-
-   {{!-- Latest compiled and minified CSS  --}}
-<link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-
+  <meta charset="utf-8">
+  <title>Example App</title>
+  {{!-- Latest compiled and minified CSS  --}}
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  {{!-- jquery --}}
+  <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 
@@ -27,7 +24,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Brand</a>
+        <a class="navbar-brand" href="">Brand</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -71,8 +68,8 @@
     </div><!-- /.container-fluid -->
   </nav>
 
-<div class="container">
+  <div class="container">
     {{{body}}}
-</div>
+  </div>
 </body>
 </html>
