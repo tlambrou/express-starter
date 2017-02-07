@@ -7,7 +7,7 @@ var app = express();
 
 var bodyParser = require('body-parser');
 
-var auth = require('controllers/auth.js');
+// var auth = require('controllers/auth.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
