@@ -1,23 +1,12 @@
 // Declarations
 var express = require('express');
-
 var exphbs  = require('express-handlebars');
-
 var app = express();
-
 var bodyParser = require('body-parser');
-
-// var auth = require('controllers/auth.js');
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
 var mongoose = require('mongoose');
-var Post = require('./models/post.js');
 
 mongoose.connect('mongodb://localhost/myapp');
+var Post = require('./models/post.js');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -33,7 +22,10 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 // Routing
 // app.get('/', function (req, res) {
 //     res.render('home');
@@ -56,12 +48,19 @@ app.get('/api/blahs', function(req, res) {
   ]);
 });
 
+app.get('/posts/:id', function (req, res) {
+  var post = posts[req.params.id];
+  res.render('todo-show', {post: post});
+});
+
 app.post('/posts', function (req, res) {
   var post = req.body;
-  res.send(post);
-  posts.push(post);
+  Todo.create(todo, function (err, todo) {
+    res.status(200).json(post);
+  })
+  // posts.push(post);
   console.log(post);
-  res.status(200).json(post);
+
 });
 
 app.put('/user', function (req, res) {
