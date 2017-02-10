@@ -1,19 +1,54 @@
-<h1>Posts</h1>
+<span class="title">Posts</span>
 
 <form action='posts-index' id='post-form'>
-    <input type="text" name="title" />
+<fieldset>
 
-    <input type="text" name="category" />
-    <textarea name="content" class="form-control"></textarea>
-    <div class='text-right'>
-      <button id="save" type='submit'>Save</button>
-    </div>
-  </form>
 
-  <div id="posts">
-    {{#each posts}}
-    <h2><a href="/posts/{{../permalink}}#{{id}}">{{this.title}}</a></h2>
-    <div>{{this.content}}</div>
-    <div>{{this.body}}</div>
-    {{/each}}
+<!-- Text input-->
+<div class="form-group">
+  <label for="title"></label>
+  <div class="col-md-3">
+  <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
+
   </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label for="category"></label>
+  <div class="col-md-4">
+  <input id="category" name="category" type="text" placeholder="Category" class="form-control input-md">
+
+  </div>
+</div>
+
+<!-- Textarea -->
+<div class="form-group">
+  <label for="content"></label>
+  <div class="col-md-4">
+    <textarea class="form-control" id="content" name="content"></textarea>
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label for="submit"></label>
+  <div class="col-md-3">
+    <button id="submit" name="submit" class="btn btn-info">Submit</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
+
+<div id="posts">
+  {{#each posts}}
+  <div class="post-item">
+    <div class="plan-name"><a href="/post/{{this._id}}">{{this.title}}</a></div>
+    <div class="remove-post pull-right" data-id="{{this._id}}">
+    <button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-plus"></span></div> </button>
+    <div class="text"><p>{{this.category}}</p></div>
+
+  </div>
+  {{/each}}
+</div>
