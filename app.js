@@ -52,7 +52,7 @@ app.get('/api/blahs', function(req, res) {
 
 //POST SHOW
 app.get('/post/:id', function (req, res) {
-  var post = posts[req.params.id];
+  var post = Post.findById(req.params.id);
   res.render('post-show', {post: post});
 });
 

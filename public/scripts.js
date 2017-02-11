@@ -31,8 +31,8 @@ $(document).ready(function() {
         event.preventDefault();
         console.log(data)
         $("#post-form")[0].reset();
-        $('#posts').append(
-          '<div class="plan-name"><a href=/post/"' + data._id + '">' + data.title + '</a></div><div class="remove-post pull-right" data-id="' + data._id + '"><button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-plus"></span></div></button><div class="text"><p>' + data.category + '</p></div>')
+        $('#posts').prepend(
+          '<div class="plan-name"><a href=/post/"' + data._id + '">' + data.title + '</a></div><div class="remove-post pull-right" data-id="' + data._id + '"><button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-minus"></span></div></button><div class="text"><p>' + data.category + '</p></div>')
       },
       error: function (response) { // 300-500
 

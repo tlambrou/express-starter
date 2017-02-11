@@ -5,35 +5,35 @@
 
 
 <!-- Text input-->
-<div class="form-group">
+<div class="form-group col-md-6 offset-md-3">
   <label for="title"></label>
-  <div class="col-md-3">
+  <div>
   <input id="title" name="title" type="text" placeholder="Title" class="form-control input-md" required="">
 
   </div>
 </div>
 
 <!-- Text input-->
-<div class="form-group">
+<div class="form-group col-md-6 offset-md-3">
   <label for="category"></label>
-  <div class="col-md-4">
+  <div>
   <input id="category" name="category" type="text" placeholder="Category" class="form-control input-md">
 
   </div>
 </div>
 
 <!-- Textarea -->
-<div class="form-group">
+<div class="form-group col-md-6 offset-md-3">
   <label for="content"></label>
-  <div class="col-md-4">
+  <div>
     <textarea class="form-control" id="content" name="content"></textarea>
   </div>
 </div>
 
 <!-- Button -->
-<div class="form-group">
+<div class="form-group col-md-6 offset-md-6">
   <label for="submit"></label>
-  <div class="col-md-3">
+  <div>
     <button id="submit" name="submit" class="btn btn-info">Submit</button>
   </div>
 </div>
@@ -46,7 +46,7 @@
   <div class="post-item">
     <div class="plan-name"><a href="/post/{{this._id}}">{{this.title}}</a></div>
     <div class="remove-post pull-right" data-id="{{this._id}}">
-    <button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-plus"></span></div> </button>
+    <button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-minus"></span></div> </button>
     <div class="text"><p>{{this.category}}</p></div>
 
   </div>
