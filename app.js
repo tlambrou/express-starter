@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myapp');
 var Post = require('./models/post.js');
+var User = require('./models/user.js');
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -33,13 +34,13 @@ app.use(bodyParser.urlencoded({
 
 //POSTS INDEX
 app.get('/', function(req, res) {
-  Post.find().exec(function(err, posts) {
+  Post.find().sort({'_id': -1}).exec(function(err, posts) {
     res.render('posts-index', { posts: posts});
-  })
+  });
 });
 
 app.get('/greetings/:name', function(req, res) {
-    res.send('<h1>Greetings, ' + req.params.name + '</h1>');
+  res.send('<h1>Greetings, ' + req.params.name + '</h1>');
 });
 
 app.get('/api/blahs', function(req, res) {
@@ -52,8 +53,9 @@ app.get('/api/blahs', function(req, res) {
 
 //POST SHOW
 app.get('/post/:id', function (req, res) {
-  var post = Post.findById(req.params.id);
-  res.render('post-show', {post: post});
+  var post = Post.findById(req.params.id).exec(function(err, post){
+    res.render('post-show', {post: post});
+  });
 });
 
 //POST CREATE
@@ -68,7 +70,6 @@ app.post('/posts', function (req, res) {
 
 //POST DELETE
 app.delete('/post/:id', function (req, res) {
-  console.log("blah");
   Post.findById(req.params.id).exec(function (err, post) {
     post.remove();
 
@@ -76,7 +77,64 @@ app.delete('/post/:id', function (req, res) {
   });
 });
 
+//POST EDIT
+app.get('/post/edit/:id', function (req, res) {
+  var post = Post.findById(req.params.id).exec(function(err, post){
+    res.render('post-edit', {post: post});
+  });
+});
+
 //POST UPDATE
+app.put('/post/:id', function (req, res) {
+  var post = Post.findOneAndUpdate({_id: req.body.id}, {
+    $set: {
+      title: req.body.title,
+      category: req.body.category,
+      content: req.body.content
+    }
+  }, {
+    // sort: {_id: -1},
+    // upsert: true
+  }, (err, result) => {
+    if (err) return res.send(err)
+    console.log("Hi Tassos");
+    res.redirect('/post/' + req.params.id);
+    res.send(result)
+  })
+})
+
+// Post.findByIdAndUpdate({_id: req.params.id}, {
+//   title: req.body.title,
+//   category: req.body.category,
+//   content: req.body.content
+// }).exec( function (err, post) {
+//   if (err) {res.json(err)}
+//   else {
+//     console.log(post);
+//     // backURL=req.header('Referer') || '/';
+//     res.redirect('/post/' + req.params.id);
+//     res.status(200).json({});
+//   }
+// })
+// })
+
+
+//SIGN UP
+app.get('/signup', function (req, res) {
+  res.render('signup');
+});
+
+//LOGIN
+app.get('/login', function(req, res) {
+  res.render('login');
+})
+
+// USER CREATE
+app.post('/users', function (req, res) {
+  console.log(req.body);
+  // User.save(req.body, function(err, user));
+  res.json({msg: "Got it!"});
+})
 
 //USER UPDATE
 app.put('/user', function (req, res) {

@@ -3,14 +3,20 @@
 <head>
   <meta charset="utf-8">
   <title>Tassos Express Starter App</title>
+
+  {{!-- BOILERPLATE --}}
   {{!-- Latest compiled and minified CSS  --}}
   <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
   {{!-- jquery --}}
   <script type="text/javascript" src="/vendor/jquery/dist/jquery.min.js"></script>
   <!-- Latest compiled and minified JavaScript -->
   <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="scripts.js"></script>
+
+  {{!-- Custom CSS & JS --}}
+  <script type="text/javascript" src="/auth.js"></script>
+  <script type="text/javascript" src="/scripts.js"></script>
+
 </head>
 <body>
 
@@ -25,15 +31,15 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="http://localhost:3000">Tassos Express Starter App</a>
+        <a class="navbar-brand" href="/">Tassos Express Starter App</a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Login</a></li>
+          <li><a href="/signup">Sign Up</a></li>
+          <li><a href="/login">Login</a></li>
 
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -42,11 +48,8 @@
 
   <div class="container">
     <div class="row transparent">
-      <div class="col-md-12">
-        <div class="tuyin first">
-          {{{body}}}
-        </div>
-      </div>
+      {{{body}}}
+
     </div>
   </div>
 
