@@ -4,8 +4,6 @@
   "description": "My very first app with node and express!",
   "main": "app.js",
   "scripts": {
-    "preinstall": "npm install node-pre-gyp",
-    "install": "node-pre-gyp install --fallback-to-build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "bower install",
     "start": "node app.js"
@@ -28,8 +26,6 @@
     "express-jwt": "^5.1.0",
     "mongodb": "^2.2.22",
     "mongoose": "^4.8.1",
-    "node-gyp": "^3.5.0",
-    "node-pre-gyp": "^0.6.33",
     "nodemon": "^1.11.0"
   },
   "devDependencies": {
