@@ -1,3 +1,4 @@
+// Function for serializing the data properly
 $.fn.serializeObject = function()
 {
   var o = {};
@@ -15,14 +16,16 @@ $.fn.serializeObject = function()
   return o;
 };
 
+//Accessing the DOM
 $(document).ready(function() {
-  // $( "#post-form" ).on("submit", function(event) {
+  //On form submit
   $( "#post-form" ).submit(function( event ) {
     event.preventDefault();
-    // var post = $(this).serialize();
+    // var post = $(this).serialize(); //Old method for serializing
     var post = $('#post-form').serializeObject();
     console.log(post);
 
+    //Posting data and pushing into the current view
     $.ajax({
       method: "POST",
       url: "/posts",
@@ -37,19 +40,9 @@ $(document).ready(function() {
         error: function (response) { // 300-500
         }
       });
-
-      //   $.post('/posts', post,
-      //   function (response) {
-      //     console.log(response)
-      //     $('#posts').append("<li>" + response.data.body + "</li>");
-      //     $('#new-post')[0].reset();
-      //   },
-      //   function (error) {
-      //
-      //   }
-      // )
     });
 
+    //Removing post from the index view
     $('.remove-post').click(function (e) {
       e.preventDefault();
       var post = $(this);
@@ -64,6 +57,7 @@ $(document).ready(function() {
       });
     });
 
+    //Clicking the edit button
     $('.edit-post').click(function (e) {
       e.preventDefault();
       var post = $(this);
@@ -71,26 +65,36 @@ $(document).ready(function() {
       window.location.href = "/post/edit/" + postId
     });
 
+    //Submitting the edit form and redirecting to the post
     $("#edit-form").submit(function( event ) {
       event.preventDefault();
       // var post = $(this).serialize();
       var post = $('#edit-form').serializeObject();
       console.log(post);
+      var postId = window.location.pathname.replace("/post", "").replace("edit","").replace("/","").replace("/","")
 
       $.ajax({
         method: "PUT",
-        url: "/post/:id",
+        url: "/post/" + postId,
         data: post,
-        success: function (data, status, jqXHR) { // 200
+        success: function (data, status, jqXHR, req, res) { // 200
           // event.preventDefault();
           // res.redirect('/post/' + req.params.id);
-          console.log(data)
+          // res.status(200).json({});
+
+          console.log("Success");
+          // Redirect to updated post show route
+          function Redirect() {
+            window.location.replace("/post/" + postId);
+          };
+          Redirect();
         },
         error: function (response) { // 300-500
         }
       });
     });
 
+    // Buttons see-saw appearing on either side of page
     $('#show').click(function (e) {
       e.preventDefault();
       $('#show').removeClass("show").addClass("hide");
@@ -103,6 +107,7 @@ $(document).ready(function() {
       $('#show').removeClass("hide").addClass("show");
     });
 
+    // Toggling classes for button on and off (blue or green)
     $('#success').click(function(s) {
       s.preventDefault();
       $(this).toggleClass('btn-primary').toggleClass('btn-success');
