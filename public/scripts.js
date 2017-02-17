@@ -73,6 +73,7 @@ $(document).ready(function() {
       console.log(post);
       var postId = window.location.pathname.replace("/post", "").replace("edit","").replace("/","").replace("/","")
 
+
       $.ajax({
         method: "PUT",
         url: "/post/" + postId,

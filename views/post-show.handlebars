@@ -3,7 +3,11 @@
     <div id="posts">
       <span class="title">{{post.title}}</span>
       <div class="plan-name">{{post.category}}</div>
+      <div class="edit-post pull-right" data-id="{{post._id}}">
+        <button type="button" action="/post/edit/{{post._id}}" class="btn btn-default">Edit <span class="glyphicon glyphicon-edit"></span> </button>
+      </div>
       <div class="text"><p>{{post.content}}</p></div>
+
     </div>
   </div>
 </div>

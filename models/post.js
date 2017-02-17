@@ -1,26 +1,27 @@
 var mongoose = require('mongoose')
-  var Schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
-  var PostSchema = new Schema({
-      createdAt     : { type: Date }
-    , updatedAt     : { type: Date }
+var PostSchema = new Schema({
+    createdAt     : { type: Date }
+  , updatedAt     : { type: Date }
 
-    , title     : { type: String, required: true }
-    , category  : { type: String, required: true }
-    , content      : { type: String, required: true }
+  , title     : { type: String, required: true }
+  , category  : { type: String, required: true }
+  , content   : { type: String, required: true }
+  , comments  : [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+})
 
-  })
 
-  var Post = mongoose.model('Post', PostSchema)
+// SET createdAt and updatedAt
+PostSchema.pre('save', function(next) {
+  now = new Date();
+  this.updatedAt = now;
+  if ( !this.createdAt ) {
+    this.createdAt = now;
+  }
+  next();
+});
 
-  module.exports = Post;
+var Post = mongoose.model('Post', PostSchema)
 
-  // SET createdAt and updatedAt
-  PostSchema.pre('save', function(next) {
-    now = new Date();
-    this.updatedAt = now;
-    if ( !this.createdAt ) {
-      this.createdAt = now;
-    }
-    next();
-  });
+module.exports = Post;
