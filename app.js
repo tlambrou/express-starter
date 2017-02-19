@@ -7,7 +7,7 @@ var mongoose = require('mongoose');
 
 // DB Setup
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myapp');
-var Post = require('./models/post.js');
+// var Post = require('./models/post.js');
 var User = require('./models/user.js');
 
 var db = mongoose.connection;
@@ -32,6 +32,8 @@ require('./controllers/auth.js')(app);
 require('./controllers/post.js')(app);
 require('./controllers/user.js')(app);
 require('./controllers/custom.js')(app);
+require('./controllers/index.js')(app);
+require('./controllers/comment.js')(app);
 
 // SERVER
 var port = process.env.PORT || 3000;

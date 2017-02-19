@@ -6,9 +6,9 @@ var PostSchema = new Schema({
   , updatedAt     : { type: Date }
 
   , title     : { type: String, required: true }
-  , category  : { type: String, required: true }
+  , category  : { type: String }
   , content   : { type: String, required: true }
-  , comments  : [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+  , comments  : [{ type: Schema.Types.ObjectId, ref: 'Comment', required: false }]
 })
 
 
@@ -22,6 +22,6 @@ PostSchema.pre('save', function(next) {
   next();
 });
 
-var Post = mongoose.model('Post', PostSchema)
+var Post = mongoose.model('Post', PostSchema);
 
 module.exports = Post;

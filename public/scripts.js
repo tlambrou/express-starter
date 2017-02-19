@@ -42,6 +42,30 @@ $(document).ready(function() {
       });
     });
 
+    $( "#comment-form" ).submit(function( event ) {
+      event.preventDefault();
+      // var post = $(this).serialize(); //Old method for serializing
+      var comment = $('#comment-form').serializeObject();
+      console.log(comment);
+      var postId = window.location.pathname.replace("/post", "").replace("edit","").replace("/","").replace("/","")
+
+      //Posting data and pushing into the current view
+      $.ajax({
+        method: "POST",
+        url: "/post/" + postId + "/comment",
+        data: comment,
+        success: function (data, status, jqXHR) { // 200
+          event.preventDefault();
+          console.log(data)
+          $("#comment-form")[0].reset();
+          $('#comments').prepend(
+            '<div class="plan-name"><p>' + data.content + '</p></div>')
+          },
+          error: function (response) { // 300-500
+          }
+        });
+      });
+
     //Removing post from the index view
     $('.remove-post').click(function (e) {
       e.preventDefault();

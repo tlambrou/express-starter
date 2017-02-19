@@ -1,5 +1,8 @@
 module.exports = function(app) {
 
+  var Post = require('../models/post.js');
+  var Comment = require('../models/comment.js');
+
   //POSTS INDEX
   app.get('/', function(req, res) {
     Post.find().sort({'_id': -1}).exec(function(err, posts) {
@@ -9,7 +12,7 @@ module.exports = function(app) {
 
   //POST SHOW
   app.get('/post/:id', function (req, res) {
-    var post = Post.findById(req.params.id).populate("comments, category").exec(function(err, post){
+    var post = Post.findById(req.params.id).populate('comments').exec(function(err, post){
       res.render('post-show', {post: post});
     });
   });
