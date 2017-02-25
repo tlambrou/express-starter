@@ -17,15 +17,34 @@ module.exports = function(app) {
   //   });
   // });
 
-  //POST CREATE
-  app.post('/post/:id/comment', function (req, res) {
-    var comment = new Comment(req.body);
-    post = Post.findById(req.params.id)
 
-    comment.save(function (err) {
-      console.log(comment);
-      res.send(comment);
+  //COMMENT CREATE
+  app.post('/posts/:postId/comments', function (req, res) {
+    Post.findById(req.params.postId).exec(function (err, post) {
+      
+      var comment = new Comment(req.body)
+      comment.save(function (err) {
+        if (err) { return res.status(300) };
+
+        post.comments.push(comment._id);
+
+        post.save(function (err) {
+          if (err) {
+            console.log(err)
+            return res.send();
+          }
+        });
+
+        res.status(200).json(comment);
+      })
     });
+    // var comment = new Comment(req.body);
+    // post = Post.findById(req.params.id)
+    //
+    // comment.save(function (err) {
+    //   console.log(comment);
+    //   res.send(comment);
+    // });
   });
 
   //POST DELETE

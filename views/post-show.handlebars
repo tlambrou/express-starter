@@ -16,15 +16,15 @@
           <div class="col-sm-12">
             <h3>Comments</h3>
 
-            <form action='comment-index' id='comment-form'>
+            <form id='comment-form'>
               <fieldset>
 
 
                 <!-- Textarea -->
-                <div class="form-group col-sm-10">
+                <div class="form-group col-sm-8">
                   <label for="content"></label>
                   <div>
-                    <textarea class="form-control" id="content" name="content" placeholder="Post a Comment"></textarea>
+                    <textarea class="form-control" id="content" name="content" for="content" placeholder="Post a Comment"></textarea>
                   </div>
                 </div>
 
@@ -42,48 +42,48 @@
           </div><!-- /col-sm-12 -->
         </div><!-- /row -->
         <div class="row">
-          <div id="comments" class="col-sm-1">
+          <div id="comments" class="col-sm-10">
             {{#each post.comments}}
-            <div class="thumbnail">
-              <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-            </div><!-- /thumbnail -->
-          </div><!-- /col-sm-1 -->
+              {{!-- <div class="thumbnail">
+                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+              </div><!-- /thumbnail --> --}}
 
-          <div class="col-sm-9">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+              <div class="col-sm-9">
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                  </div>
+                  <div class="panel-body">
+                    {{this.content}}
+                  </div><!-- /panel-body -->
+                </div><!-- /panel panel-default -->
               </div>
-              <div class="panel-body">
-                {{this.content}}
-              </div><!-- /panel-body -->
-            </div><!-- /panel panel-default -->
+            {{/each}}
           </div>
-          {{/each}}
           <!-- /col-sm-5 -->
           {{!-- <div class="col-md-2">
 
-          </div>
-          <div class="col-sm-1">
-            <div class="thumbnail">
-              <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-            </div><!-- /thumbnail -->
-          </div><!-- /col-sm-1 -->
+        </div>
+        <div class="col-sm-1">
+        <div class="thumbnail">
+        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+      </div><!-- /thumbnail -->
+    </div><!-- /col-sm-1 -->
 
-          <div class="col-sm-5">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-              </div>
-              <div class="panel-body">
-                Panel content
-              </div><!-- /panel-body -->
-            </div><!-- /panel panel-default -->
-          </div><!-- /col-sm-5 -->
-        </div><!-- /row --> --}}
-
-      </div><!-- /container -->
-
-    </div>
+    <div class="col-sm-5">
+    <div class="panel panel-default">
+    <div class="panel-heading">
+    <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
   </div>
+  <div class="panel-body">
+  Panel content
+</div><!-- /panel-body -->
+</div><!-- /panel panel-default -->
+</div><!-- /col-sm-5 -->
+</div><!-- /row --> --}}
+
+</div><!-- /container -->
+
+</div>
+</div>
 </div>

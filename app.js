@@ -4,9 +4,12 @@ var exphbs  = require('express-handlebars');
 var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var jwt = require('express-jwt');
+var cookieParser = require('cookie-parser');
 
 // DB Setup
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/myapp');
+mongoose.Promise = global.Promise;
 // var Post = require('./models/post.js');
 var User = require('./models/user.js');
 
@@ -25,6 +28,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+// app.use(cookieParser());
+//
+// app.use(jwt({
+//   secret: 'shhhhhhared-secret',
+//   getToken: function fromHeaderOrCookie (req) { //fromHeaderOrQuerystring
+//     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
+//       return req.headers.authorization.split(' ')[1];
+//     } else if (req.cookies && req.cookies.token) {
+//       return req.cookies.token;
+//     }
+//     return null;
+//   }
+// }).unless({path: ['/', '/login', '/signup']}));
 
 //ROUTES
 //===========

@@ -8,7 +8,7 @@ var PostSchema = new Schema({
   , title     : { type: String, required: true }
   , category  : { type: String }
   , content   : { type: String, required: true }
-  , comments  : [{ type: Schema.Types.ObjectId, ref: 'Comment', required: false }]
+  , comments  : [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
 })
 
 

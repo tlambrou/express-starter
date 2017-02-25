@@ -6,8 +6,8 @@ var CommentSchema = new Schema({
   , updatedAt     : { type: Date }
 
   , content       : { type: String, required: true }
-  , user          : { type: String, required: true }
-  // , post          : { type: Schema.Types.ObjectId, ref: 'Post', required: true }
+  // , user          : { type: String, required: true }
+  // , post          : { type: Schema.Types.ObjectId, ref: 'Post' }
 
 })
 
