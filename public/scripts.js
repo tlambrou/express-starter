@@ -45,8 +45,8 @@ $(document).ready(function() {
     // Submitting a comment form.
     $( "#comment-form" ).submit(function( event ) {
       event.preventDefault();
-      var comment = $(this).serialize(); //Old method for serializing
-      // var comment = $(this).serializeObject();
+      // var post = $(this).serialize(); //Old method for serializing
+      var comment = $(this).serializeObject();
       var postId = window.location.pathname.replace("/post", "").replace("edit","").replace("/","").replace("/","")
 
       // Posting data and pushing into the current view
@@ -57,10 +57,10 @@ $(document).ready(function() {
         success: function (data, status) { // 200
           console.log(data.content)
           $('#comments').prepend('<div class="plan-name"><p>' + data.content + '</p></div>');
-          $( "#comment-form" )[0].reset();
+          $(this)[0].reset();
         },
         error: function (response) { // 300-500
-          console.log(response);
+          console.log(resonse)
         }
       });
     });

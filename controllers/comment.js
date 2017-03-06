@@ -21,7 +21,7 @@ module.exports = function(app) {
   //COMMENT CREATE
   app.post('/posts/:postId/comments', function (req, res) {
     Post.findById(req.params.postId).exec(function (err, post) {
-      
+
       var comment = new Comment(req.body)
       comment.save(function (err) {
         if (err) { return res.status(300) };
@@ -31,7 +31,9 @@ module.exports = function(app) {
         post.save(function (err) {
           if (err) {
             console.log(err)
-            return res.send();
+
+          } else {
+            res.send(comment);
           }
         });
 

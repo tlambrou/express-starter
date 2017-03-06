@@ -1,11 +1,13 @@
 <div class="col-md-12">
-  <div class="tuyin first">
     <div id="posts">
-      <span class="title">{{post.title}}</span>
-      <div class="plan-name">{{post.category}}</div>
       <div class="edit-post pull-right" data-id="{{post._id}}">
-        <button type="button" action="/post/edit/{{post._id}}" class="btn btn-default">Edit <span class="glyphicon glyphicon-edit"></span> </button>
-      </div>
+      <button type="button" action="/post/edit/{{post._id}}" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> </button>
+    </div>
+      <h2>{{post.title}}</h2>
+
+
+      <h4>{{post.category}}</h4>
+
       <div class="text"><p>{{post.content}}</p></div>
 
 
@@ -44,39 +46,39 @@
         <div class="row">
           <div id="comments" class="col-sm-10">
             {{#each post.comments}}
-              {{!-- <div class="thumbnail">
-                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-              </div><!-- /thumbnail --> --}}
+            {{!-- <div class="thumbnail">
+            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+          </div><!-- /thumbnail --> --}}
 
-              <div class="col-sm-9">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-                  </div>
-                  <div class="panel-body">
-                    {{this.content}}
-                  </div><!-- /panel-body -->
-                </div><!-- /panel panel-default -->
+          <div class="col-sm-9">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <strong>username</strong> <span class="text-muted">{{this.updatedAt}}</span>
               </div>
-            {{/each}}
+              <div class="panel-body">
+                {{this.content}}
+              </div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
           </div>
-          <!-- /col-sm-5 -->
-          {{!-- <div class="col-md-2">
-
+          {{/each}}
         </div>
-        <div class="col-sm-1">
-        <div class="thumbnail">
-        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-      </div><!-- /thumbnail -->
-    </div><!-- /col-sm-1 -->
+        <!-- /col-sm-5 -->
+        {{!-- <div class="col-md-2">
 
-    <div class="col-sm-5">
-    <div class="panel panel-default">
-    <div class="panel-heading">
-    <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-  </div>
-  <div class="panel-body">
-  Panel content
+      </div>
+      <div class="col-sm-1">
+      <div class="thumbnail">
+      <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+    </div><!-- /thumbnail -->
+  </div><!-- /col-sm-1 -->
+
+  <div class="col-sm-5">
+  <div class="panel panel-default">
+  <div class="panel-heading">
+  <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+</div>
+<div class="panel-body">
+Panel content
 </div><!-- /panel-body -->
 </div><!-- /panel panel-default -->
 </div><!-- /col-sm-5 -->

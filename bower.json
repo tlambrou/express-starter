@@ -1,5 +1,5 @@
 {
-  "name": "myapp",
+  "name": "express-starter",
   "description": "My very first app with node and express!",
   "main": "app.js",
   "authors": [

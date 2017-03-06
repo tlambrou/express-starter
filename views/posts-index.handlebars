@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <div class="tuyin first">
+
 
 
     <span class="title">Posts</span>
@@ -47,13 +47,13 @@
 
     <div id="posts">
       {{#each posts}}
-      <div class="post-item">
+      <div class="well well-sm post-item">
         <div class="plan-name"><a href="/post/{{this._id}}">{{this.title}}</a></div>
         <div class="edit-post pull-right" data-id="{{this._id}}">
-          <button type="button" action="/post/edit/{{this._id}}" class="btn btn-default">Edit <span class="glyphicon glyphicon-edit"></span> </button>
+          <button type="button" action="/post/edit/{{this._id}}" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> </button>
         </div>
         <div class="remove-post pull-right" data-id="{{this._id}}">
-          <button type="button" class="btn btn-default">Remove <span class="glyphicon glyphicon-minus"></span> </button>
+          <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-trash"></span> </button>
         </div>
         <div class="text"><p><span class="label label-default">{{this.category}}</span></p></div>
 
@@ -69,5 +69,5 @@
     <div class="box">
       <button id="success" name="success" class="btn btn-success">Success</button>
     </div>
-  </div>
+
 </div>

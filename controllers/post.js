@@ -31,7 +31,6 @@ module.exports = function(app) {
   app.delete('/post/:id', function (req, res) {
     Post.findById(req.params.id).exec(function (err, post) {
       post.remove();
-
       res.status(200).json({});
     });
   });
