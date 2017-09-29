@@ -18,28 +18,57 @@ module.exports = function(app) {
   // });
 
 
+
   //COMMENT CREATE
   app.post('/posts/:postId/comments', function (req, res) {
-    Post.findById(req.params.postId).exec(function (err, post) {
 
-      var comment = new Comment(req.body)
-      comment.save(function (err) {
-        if (err) { return res.status(300) };
+    // Post.findById(id).then(post => post.save).catch()
 
-        post.comments.push(comment._id);
-
-        post.save(function (err) {
-          if (err) {
-            console.log(err)
-
-          } else {
-            res.send(comment);
-          }
-        });
-
-        res.status(200).json(comment);
-      })
+    var post
+    Post.findById(req.params.postId).then((post) => {
+      post = post
+      const comment = new Comment(req.body)
+      return comment.save()
+    }).then((comment) => {
+      post.comments.push(comment)
+      return post.save()
+    }).then((post) => {
+      return res.send(comment);
+    }).catch((err) => {
+      console.log("There was an error in the comment CREATE route:", err)
+      return err
     });
+
+    // var query = Post.findById(req.params.postId);
+    // query.exec()
+    //
+    // ...
+    //
+    //
+    // query.exec()
+
+
+    // Post.findById(req.params.postId).exec(function (err, post) {
+    //
+    //   var comment = new Comment(req.body)
+    //   comment.save(function (err) {
+    //     if (err) { return res.status(300) };
+    //
+    //     post.comments.push(comment._id);
+    //
+    //     post.save(function (err) {
+    //       if (err) {
+    //         console.log(err)
+    //
+    //       } else {
+    //         res.send(comment);
+    //
+    //       }
+    //     });
+    //
+    //     // status(200).json(comment);
+    //   })
+    // });
     // var comment = new Comment(req.body);
     // post = Post.findById(req.params.id)
     //
