@@ -24,14 +24,14 @@ module.exports = function(app) {
 
     // Post.findById(id).then(post => post.save).catch()
 
-    var post
+    var postObj
     Post.findById(req.params.postId).then((post) => {
-      post = post
+      postObj = post
       const comment = new Comment(req.body)
       return comment.save()
     }).then((comment) => {
-      post.comments.push(comment)
-      return post.save()
+      postObj.comments.push(comment)
+      return postObj.save()
     }).then((post) => {
       return res.send(comment);
     }).catch((err) => {
